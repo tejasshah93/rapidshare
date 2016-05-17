@@ -1,0 +1,13 @@
+<p>
+  <strong>Title:</strong>
+  <%= @document.title %>
+</p>
+
+<p>
+  <strong>File:</strong>
+  <a href = "<%= url_for(action: 'download_file',
+              controller: 'documents',
+              id: @document.id) %>">Download File</a>
+</p>
+
+<%= link_to 'Back', documents_path %>

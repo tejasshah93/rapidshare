@@ -1,0 +1,23 @@
+<h1>All files</h1>
+
+<%= link_to 'Create new document', new_document_path %><br><br>
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+
+  <% @documents.each do |document| %>
+    <tr>
+      <td><%= document.title %></td>
+      <td><%= link_to 'Show', document_path(document) %></td>
+      <td>
+        <a href = "<%= url_for(action: 'download_file',
+                               controller: 'documents',
+                               id: document.id) %>">Download File</a>
+      </td>
+      <td><%= link_to 'Destroy', document_path(document),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
