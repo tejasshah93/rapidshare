@@ -10,21 +10,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_160_517_125_340) do
-  create_table 'documents', force: true do |t|
-    t.string   'title'
-    t.string   'doc_path'
-    t.integer  'user_id'
-    t.datetime 'created_at'
-    t.datetime 'updated_at'
+ActiveRecord::Schema.define(:version => 20160517125340) do
+
+  create_table "documents", :force => true do |t|
+    t.string   "title"
+    t.string   "doc_path"
+    t.boolean  "is_private", :default => true
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table 'users', force: true do |t|
-    t.string   'first_name'
-    t.string   'last_name'
-    t.string   'email'
-    t.string   'password_digest'
-    t.datetime 'created_at'
-    t.datetime 'updated_at'
+  create_table "users", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_hash"
+    t.string   "password_salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
 end

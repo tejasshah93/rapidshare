@@ -18,12 +18,12 @@
 
   <p>
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, required: true %>
   </p>
 
   <p>
     <%= f.label :user_file %><br>
-    <%= f.file_field :doc_path %>
+    <%= f.file_field :doc_path, required: true %>
     </p>
 
   <p>
