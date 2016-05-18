@@ -2,3 +2,4 @@
   <strong>User:</strong>
   <%= @user.first_name %> <%= @user.last_name %>
 </p>
+<%= render :partial => 'documents/index', :locals => {:user => @user} %>

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
                               params[:session][:password])
     if @user
       session[:user_id] = @user.id
-      redirect_to '/documents'
+      redirect_to user_path(@user)
     else
       redirect_to '/login'
     end

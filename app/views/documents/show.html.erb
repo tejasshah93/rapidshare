@@ -7,7 +7,7 @@
   <strong>File:</strong>
   <a href = "<%= url_for(action: 'download_file',
               controller: 'documents',
-              id: @document.id) %>">Download File</a>
+              id: @document.id, user_id: @user.id) %>">Download File</a>
 </p>
 
 <p>
@@ -15,5 +15,8 @@
   <%= @document.is_private %>
 </p>
 
-<%= link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', documents_path %>
+<%= link_to 'Back', user_path(@user) %> |
+<%= link_to 'Edit', edit_user_document_path(@user, @document) %> |
+<%= link_to 'Destroy', user_document_path(@user, @document),
+                                       method: :delete,
+                                       data: { confirm: 'Are you sure?' } %>

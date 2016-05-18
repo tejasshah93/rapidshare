@@ -18,8 +18,8 @@
             </ul>
           <% else %>
             <ul>
-              <li><%= link_to "Login", 'login' %></a></li>
-              <li><%= link_to "Signup", 'signup' %></a></li>
+              <li><%= link_to 'Login', controller: 'sessions', action: 'new' %></a></li>
+              <li><%= link_to 'Signup', controller: 'users', action: 'new' %></a></li>
             </ul>
           <% end %>
         </div>

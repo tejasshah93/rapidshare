@@ -1,0 +1,24 @@
+<h1>All public files</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Title</th>
+  </tr>
+  <% @documents.each do |document| %>
+    <tr>
+      <td><%= document.user_id %></td>
+      <td><%= document.title %></td>
+      <td><%= link_to 'Show', user_document_path(document.user_id, document.id) %></td>
+      <td>
+        <a href = "<%= url_for(action: 'download_file',
+                               controller: 'documents',
+                               id: document.id, user_id: document.user.id) %>">Download File</a>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<% if session[:user_id] %>
+  <%= link_to 'Back', user_path(session[:user_id]) %>
+<% end %>

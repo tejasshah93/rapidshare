@@ -8,14 +8,16 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id
-      redirect_to '/documents'
+      redirect_to user_path(@user)
     else
       redirect_to '/signup'
     end
   end
 
   def show
+    redirect_to '/login' unless session[:user_id]
     @user = User.find(params[:id])
+    @documents = @user.documents
   end
 
   private

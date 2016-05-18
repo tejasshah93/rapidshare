@@ -1,15 +1,17 @@
 RapidShare::Application.routes.draw do
   get 'welcome/index'
-  get 'documents/download_file/:id' => 'documents#download_file'
 
   get 'signup' => 'users#new'
-
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
-  resources :users
-  resources :documents
+  get 'public_documents' => 'documents#public_documents'
+
+  resources :users do
+    resources :documents
+    get 'documents/download_file/:id' => 'documents#download_file'
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

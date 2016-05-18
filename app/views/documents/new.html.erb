@@ -1,6 +1,6 @@
-<h1> New Document </h1>
+<h1> New File Upload </h1>
 
-<%= form_for :document, url: documents_path, :html => {:multipart => true}  do |f| %>
+<%= form_for :document, url: user_documents_path, :html => {:multipart => true}  do |f| %>
 
   <% if @document && @document.errors.any? %>
     <div id="error_explanation">
@@ -36,4 +36,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Back', documents_path %>
+<%= link_to 'Back', user_documents_path %>
