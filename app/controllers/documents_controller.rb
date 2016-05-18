@@ -16,6 +16,10 @@ class DocumentsController < ApplicationController
   def new
   end
 
+  def edit
+    @document = Document.find(params[:id])
+  end
+
   # rubocop:disable AbcSize
   # rubocop:disable MethodLength
   def create
@@ -37,6 +41,22 @@ class DocumentsController < ApplicationController
   # rubocop:enable AbcSize
   # rubocop:enable MethodLength
 
+  def update
+    @document = Document.find(params[:id])
+
+    if @document.update_attributes(params[:document])
+      redirect_to @document
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @document = Document.find(params[:id])
+    @document.destroy
+    redirect_to documents_path
+  end
+
   def retrieve_file_path(uploaded_io)
     Rails.root.join('public', 'uploads', uploaded_io.original_filename)
   end
@@ -46,15 +66,9 @@ class DocumentsController < ApplicationController
     send_file @document.doc_path, disposition: 'attachment'
   end
 
-  def destroy
-    @document = Document.find(params[:id])
-    @document.destroy
-    redirect_to documents_path
-  end
-
   private
 
   def document_params
-    params.require(:document).permit(:title)
+    params.require(:document).permit(:title, :doc_path, :is_private)
   end
 end

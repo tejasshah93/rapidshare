@@ -1,0 +1,21 @@
+<h1>Editing file</h1>
+ 
+<%= form_for :document, url: document_path(@document), html: {method: :put} do |f| %>
+ 
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title, required: true %>
+  </p>
+
+  <p>
+    <%= f.label :is_private %><br>
+    <%= f.check_box :is_private %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>
+ 
+<%= link_to 'Back', documents_path %>

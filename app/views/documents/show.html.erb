@@ -10,4 +10,10 @@
               id: @document.id) %>">Download File</a>
 </p>
 
+<p>
+  <strong>Is Private:</strong>
+  <%= @document.is_private %>
+</p>
+
+<%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>
