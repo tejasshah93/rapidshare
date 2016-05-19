@@ -9,10 +9,17 @@ class DocumentsController < ApplicationController
     @documents = Document.all
   end
 
+  # rubocop:disable AbcSize
   def show
     @document = Document.find(params[:id])
-    @user = User.find(params[:user_id])
+    if @document.is_private? && (!user_signed_in? || current_user.id != \
+                                                   @document.user_id)
+      redirect_to public_documents_path
+    else
+      @user = User.find(params[:user_id])
+    end
   end
+  # rubocop:enable AbcSize
 
   def new
   end

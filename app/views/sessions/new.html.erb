@@ -1,6 +1,0 @@
-<%= form_for(:session, url: login_path) do |f| %>
-  <%= render 'shared/errors', object: @user %>
-  <%= f.email_field :email, :placeholder => "Email", required: true %><br>
-  <%= f.password_field :password, :placeholder => "Password", require: true %><br>
-  <%= f.submit "Log in", class: "btn-submit" %>
-<% end %>
