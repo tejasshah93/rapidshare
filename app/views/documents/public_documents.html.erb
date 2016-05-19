@@ -19,6 +19,6 @@
   <% end %>
 </table>
 <br>
-<% if session[:user_id] %>
-  <%= link_to 'Back', user_path(session[:user_id]) %>
+<% if user_signed_in? %>
+  <%= link_to 'Back', user_path(current_user) %>
 <% end %>

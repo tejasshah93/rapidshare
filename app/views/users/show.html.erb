@@ -1,5 +1,5 @@
 <p>
   <strong>User:</strong>
-  <%= @user.first_name %> <%= @user.last_name %>
+  <%= current_user.email %>
 </p>
-<%= render :partial => 'documents/index', :locals => {:user => @user} %>
+<%= render :partial => 'documents/index'%>

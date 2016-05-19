@@ -1,24 +1,24 @@
 <h1>All files</h1>
 
 <%= link_to 'Public Files', controller: 'documents', action: 'public_documents' %><br><br>
-<%= link_to 'Create new document', new_user_document_path(@user) %><br><br>
+<%= link_to 'Create new document', new_user_document_path(current_user) %><br><br>
 <table>
   <tr>
     <th>User</th>
     <th>Title</th>
   </tr>
-  <% @documents.each do |document| %>
+  <% current_user.documents.each do |document| %>
     <tr>
-      <td><%= @user.first_name %></td>
+      <td><%= current_user.email %></td>
       <td><%= document.title %></td>
-      <td><%= link_to 'Show', user_document_path(@user, document) %></td>
-      <td><%= link_to 'Edit', edit_user_document_path(@user, document) %></td>
+      <td><%= link_to 'Show', user_document_path(current_user, document) %></td>
+      <td><%= link_to 'Edit', edit_user_document_path(current_user, document) %></td>
       <td>
         <a href = "<%= url_for(action: 'download_file',
                                controller: 'documents',
-                               id: document.id, user_id: @user.id) %>">Download File</a>
+                               id: document.id, user_id: current_user.id) %>">Download File</a>
       </td>
-      <td><%= link_to 'Destroy', user_document_path(@user, document),
+      <td><%= link_to 'Destroy', user_document_path(current_user, document),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>
