@@ -5,9 +5,7 @@
 
 <p>
   <strong>File:</strong>
-  <a href = "<%= url_for(action: 'download_file',
-              controller: 'documents',
-              id: @document.id) %>">Download File</a>
+  <%= link_to 'Download', @document.doc.url %>
 </p>
 
 <p>

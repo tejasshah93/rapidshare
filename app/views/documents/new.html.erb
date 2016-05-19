@@ -1,20 +1,7 @@
 <h1> New File Upload </h1>
 
 <%= form_for :document, url: user_documents_path, :html => {:multipart => true}  do |f| %>
-
-  <% if @document && @document.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@document.errors.count, "error") %> prohibited
-        this file from being saved:
-      </h2>
-      <ul>
-        <% @document.errors.full_messages.each do |msg| %>
-          <li><%= msg.to_s %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/errors', object: @document %>
 
   <p>
     <%= f.label :title %><br>
@@ -23,7 +10,7 @@
 
   <p>
     <%= f.label :user_file %><br>
-    <%= f.file_field :doc_path, required: true %>
+    <%= f.file_field :doc, required: true %>
   </p>
 
   <p>

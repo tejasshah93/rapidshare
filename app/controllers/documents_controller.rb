@@ -22,16 +22,7 @@ class DocumentsController < ApplicationController
     redirect_to user_path(current_user) if current_user.id != @document.user_id
   end
 
-  # rubocop:disable AbcSize
-  # rubocop:disable MethodLength
   def create
-    uploaded_io = params[:document][:doc_path]
-    file_path = retrieve_file_path(uploaded_io)
-    File.open(file_path, 'wb') do |file|
-      file.write(uploaded_io.read)
-    end
-
-    params[:document][:doc_path] = file_path.to_s
     @document = current_user.documents.new(params[:document])
 
     if @document.save
@@ -59,11 +50,6 @@ class DocumentsController < ApplicationController
 
   def retrieve_file_path(uploaded_io)
     Rails.root.join('public', 'uploads', uploaded_io.original_filename)
-  end
-
-  def download_file
-    @document = Document.find(params[:id])
-    send_file @document.doc_path, disposition: 'attachment'
   end
 
   def public_documents
