@@ -18,7 +18,7 @@
                                controller: 'documents',
                                id: document.id, user_id: @user.id) %>">Download File</a>
       </td>
-      <td><%= link_to 'Destroy', user_document_path(@user, document),
+      <td><%= button_to 'Destroy', user_document_path(@user, document),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>

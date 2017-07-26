@@ -3,7 +3,7 @@ class DocumentsController < ApplicationController
   include AbstractController::Callbacks
 
   # before_action :require_user, only: [:index, :show]
-  before_filter :require_user, except: [:public_documents, :show]
+  before_action :require_user, except: [:public_documents]
 
   def index
     @documents = Document.all
@@ -37,7 +37,7 @@ class DocumentsController < ApplicationController
     params[:document][:doc_path] = file_path.to_s
     # @document = Document.new(params[:document])
     @user = User.find(params[:user_id])
-    @document = @user.documents.new(params[:document])
+    @document = @user.documents.new(document_params)
 
     if @document.save
       redirect_to user_document_path(@user, @document)
