@@ -1,12 +1,15 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '4.1.15'
+gem 'prototype-rails'
+gem 'protected_attributes'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'pry'
 gem 'sqlite3'
-gem 'devise', '1.5.4'
+gem 'devise', '3.5.2'
 gem 'paperclip', '~> 2.0'
 # Use unicorn as the web server
 # gem 'unicorn'

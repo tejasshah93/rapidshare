@@ -19,6 +19,6 @@
   <%= link_to 'Back', public_documents_path %> |
 <% end%>
 <%= link_to 'Edit', edit_user_document_path(@user, @document) %> |
-<%= link_to 'Destroy', user_document_path(@user, @document),
+<%= button_to 'Destroy', user_document_path(@user, @document),
                                        method: :delete,
                                        data: { confirm: 'Are you sure?' } %>

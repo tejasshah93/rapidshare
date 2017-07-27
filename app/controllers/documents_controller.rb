@@ -30,7 +30,7 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = current_user.documents.new(params[:document])
+    @document = current_user.documents.new(document_params)
 
     if @document.save
       redirect_to user_document_path(current_user, @document)
@@ -42,7 +42,7 @@ class DocumentsController < ApplicationController
   def update
     @document = Document.find(params[:id])
 
-    if @document.update_attributes(params[:document])
+    if @document.update_attributes(document_params)
       redirect_to user_document_path(current_user, @document)
     else
       render 'edit'

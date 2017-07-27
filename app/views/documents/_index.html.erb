@@ -14,7 +14,7 @@
       <td><%= link_to 'Show', user_document_path(current_user, document) %></td>
       <td><%= link_to 'Edit', edit_user_document_path(current_user, document) %></td>
       <td><%= link_to 'Download', document.doc.url %></td>
-      <td><%= link_to 'Destroy', user_document_path(current_user, document),
+      <td><%= button_to 'Destroy', user_document_path(current_user, document),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>
